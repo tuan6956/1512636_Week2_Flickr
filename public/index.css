@@ -1,0 +1,18 @@
+#container {
+    font-family: 'Roboto', sans-serif;    
+}
+#header{
+    height: 80px; 
+    background-color: black; 
+    color: white; 
+    text-align: center; 
+    font-size: 40px; 
+    padding-top: 10px
+}
+#body{
+    background-color: #f3f5f6; 
+    margin: 0px
+}
+#root{
+    padding: 50px 50px 50px 50px;
+}

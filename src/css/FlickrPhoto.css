@@ -1,0 +1,29 @@
+.caption {
+    background-color: rgba(0, 0, 0, 0.3); 
+    max-height: 240px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    width: 98.5%;
+    color: white;
+    padding: 3px;
+    font-size: 90%;
+}
+
+.tagName {
+    word-wrap: break-word;
+    display: inline-block;
+    height: auto;
+    font-size: 90%;
+    line-height: 1;
+    padding-top: 3px;
+    /* padding: .2em .6em .3em; */
+    border-radius: .25em;
+    color: white;
+    vertical-align: baseline;
+    margin: 2px;
+}
+.tagView{
+    font-weight: bold;
+    float: right;
+}
