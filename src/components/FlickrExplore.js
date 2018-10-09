@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 const apiKey = "84fa21db4402dcc66c64fd143d16fb8f";
 const maxHeight = 282;
-export default class Flickr extends React.Component {
+export default class FlickrExplore extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -15,6 +15,7 @@ export default class Flickr extends React.Component {
             hasMore: true,
         }
         this.getPhoto = this.getPhoto.bind(this)
+        //console.log(this.props.history);
     }
 
     getPhoto(page) {
@@ -33,9 +34,9 @@ export default class Flickr extends React.Component {
                                 caption: photo.title,
                                 ownername: photo.ownername,
                                 views: photo.views,
+                                id: photo.id,
                             };
                         });
-                        console.log(images);
         
                         this.setState(previousState => ({
                             images: previousState.images.concat(images),
@@ -50,11 +51,11 @@ export default class Flickr extends React.Component {
             <div className="loader " style={{marginTop: maxHeight, textAlign: "center"}}  key={0}>
                 <i className="fa fa-spinner fa-spin" style={{fontSize: "40px"}}> </i>
             </div> ;
-        return (
-            <InfiniteScroll pageStart={0} loadMore={this.getPhoto} hasMore={this.state.hasMore} loader={loader}>
+        return(
+            <InfiniteScroll className="body" pageStart={0} loadMore={this.getPhoto} hasMore={this.state.hasMore} loader={loader}>
                 <FlickrGallery images={this.state.images}/>
                 <div style={{color: "#f3f5f6"}}> div </div>
             </InfiniteScroll>
-        )}
+        )};
 }
 

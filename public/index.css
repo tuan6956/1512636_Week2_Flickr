@@ -9,10 +9,25 @@
     font-size: 40px; 
     padding-top: 10px
 }
-#body{
-    background-color: #f3f5f6; 
-    margin: 0px
+#headerNav{
+    height: 80px; 
+    color: white; 
+    font-size: 40px; 
+    padding-top: 10px;
+    text-decoration: none !important;
+
 }
-#root{
+.nav-item-custom > a{
+    color:white !important;
+    text-decoration: none !important;
+    padding-top: 60%;
+    padding-left: 30px;
+}
+#nav{
+    background-color: #f3f5f6; 
+    margin: 0px;
+
+}
+.body{
     padding: 50px 50px 50px 50px;
 }
