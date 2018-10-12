@@ -59,7 +59,7 @@ class Header extends React.Component {
                 </Nav>
                 <Form className="navbar-form ml-auto" action="photos" inline>
                     <FormGroup>
-                        <Input value="123123" type="text" onChange={this.handleChange} placeholder={x} name="tag"></Input>
+                        <Input type="text" onChange={this.handleChange} placeholder={x} name="tag"></Input>
                     </FormGroup>
                     <Button className="fa fa-search" onClick={this.handleClick}></Button>
                 </Form>
