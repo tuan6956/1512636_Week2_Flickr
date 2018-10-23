@@ -1,36 +1,15 @@
- import React from 'react';
- import ReactDOM from 'react-dom';
- import FlickrExplore from './components/FlickrExplore'
- import FlickrTag from './components/FlickrTag'
- import FlickrPhoto from './components/FlickrPhoto'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './containers/App';
+import { createStore } from 'redux'
+import rootReducer from './reducers'
+import { Provider } from 'react-redux'
 
- import Header from './components/Header'
+const store = createStore(rootReducer)
 
- import 'bootstrap/dist/css/bootstrap.min.css';
- import {
-    BrowserRouter,
-    Route,
-    Switch,
-    } from 'react-router-dom'
- ReactDOM.render(
-
-    <BrowserRouter>
-        <div>
-            <Header/>
-            <Route exact path="/" component={FlickrExplore} />
-            <Route exact path="/photos" component={FlickrTag} />
-            <Route path="/explore" component={FlickrExplore} />
-            <Route path="/photos/:id" component={FlickrPhoto} />
-        
-
-    </div>
-  </BrowserRouter>
-    // <BrowserRouter>
-    //     <Switch>
-    //         <Route exact path="/" component={Main} />
-    //         <Route path="/about" component={App}/>
-    //     </Switch>
-    // </BrowserRouter>
-    , 
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );

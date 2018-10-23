@@ -2,12 +2,9 @@ import React from 'react';
 import {
   Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  Form, 
+  Form,
   FormGroup,
   Input,
   Button
@@ -15,9 +12,10 @@ import {
 import {
   Link,
   withRouter,
-  } from 'react-router-dom'
-  import queryString from 'query-string'
+} from 'react-router-dom'
 
+import queryString from 'query-string'
+import SearchTagContainer from '../containers/SearchTagContainer'
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -31,41 +29,42 @@ class Header extends React.Component {
     };
   }
 
-  handleChange (e) {
-    if(e.target.value !== this.state.input)
-      this.setState({ input: e.target.value});
+  handleChange(e) {
+    if (e.target.value !== this.state.input)
+      this.setState({ input: e.target.value });
   }
 
   handleClick() {
-    
+
     this.props.history.push('/photos?tag=' + this.state.input)
   }
-  getTag(){
-      const url = window.location.href;
-      return queryString.parseUrl(url).query.tag;
+  getTag() {
+    const url = window.location.href;
+    return queryString.parseUrl(url).query.tag;
   }
   render() {
     var x = this.getTag();
-    x = x == null ? "Search" : x; 
+    x = x == null ? "Search" : x;
     return (
       <div id="nav">
-            <Navbar color="dark" light expand="md">
-            <Link to="/" id="headerNav"> Flickr</Link>
-            <Collapse  navbar>
-                <Nav className="" navbar>
-                <NavItem className="nav-item-custom">
-                    <Link to="/explore">Explore</Link>
-                </NavItem>
-                </Nav>
-                <Form className="navbar-form ml-auto" action="photos" inline>
+        <Navbar color="dark" light expand="md">
+          <Link to="/" id="headerNav"> Flickr</Link>
+          <Collapse navbar>
+            <Nav className="" navbar>
+              <NavItem className="nav-item-custom">
+                <Link to="/explore">Explore</Link>
+              </NavItem>
+            </Nav>
+            <SearchTagContainer history={this.props.history} />
+            {/* <Form className="navbar-form ml-auto" action="photos" inline>
                     <FormGroup>
                         <Input type="text" onChange={this.handleChange} placeholder={x} name="tag"></Input>
                     </FormGroup>
                     <Button className="fa fa-search" onClick={this.handleClick}></Button>
-                </Form>
-            </Collapse>
-            </Navbar>
-        </div>
+                </Form> */}
+          </Collapse>
+        </Navbar>
+      </div>
     );
   }
 }

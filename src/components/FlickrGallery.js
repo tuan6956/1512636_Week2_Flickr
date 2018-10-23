@@ -10,7 +10,6 @@ import {withRouter} from "react-router-dom";
     }
     onSelectedImage(index) {
         var image = this.props.images[index];
-        console.log(image);
         this.props.history.push('photos/' + image.id);
     }
     render(){
