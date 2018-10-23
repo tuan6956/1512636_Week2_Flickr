@@ -2,6 +2,7 @@ import React from 'react';
 import FlickrGallery from './FlickrGallery';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroller';
+import ReactLoading from "react-loading";
 
 const apiKey = "84fa21db4402dcc66c64fd143d16fb8f";
 const maxHeight = 282;
@@ -18,7 +19,7 @@ export default class FlickrExplore extends React.Component {
     }
 
     getPhoto(page) {
-        let link = `https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=${apiKey}&extras=views%2C+owner_name%2C+url_z&per_page=20&page=${page}&format=json&nojsoncallback=1`;
+        let link = `https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&date=2018-10-21&api_key=${apiKey}&extras=views%2C+owner_name%2C+url_z&per_page=20&page=${page}&format=json&nojsoncallback=1`;
         axios.get(link).then(res => {
             if (res.data.stat !== "ok") {
                 return;
@@ -47,9 +48,11 @@ export default class FlickrExplore extends React.Component {
 
     render() {
         var loader =
-            <div className="loader " style={{ marginTop: maxHeight, textAlign: "center" }} key={0}>
-                <i className="fa fa-spinner fa-spin" style={{ fontSize: "40px" }}> </i>
-            </div>;
+        <div className="container-photo" >
+                <div className="loader" key={0}>
+                    <ReactLoading type={this.type} color="black" height={100} width={100} />
+                </div>
+             </div>
         return (
             <InfiniteScroll className="body" pageStart={0} loadMore={this.getPhoto} hasMore={this.state.hasMore} loader={loader}>
                 <FlickrGallery images={this.state.images} />
